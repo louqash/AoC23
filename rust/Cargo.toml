@@ -1,0 +1,11 @@
+[package]
+name = "advent-of-code-2023"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+colored = "2"
+
+[[bin]]
+name = "aoc23"
+path = "src/main.rs"
