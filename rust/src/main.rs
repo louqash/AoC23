@@ -1,4 +1,5 @@
 use std::fs;
+use std::io::{stdin, Write};
 
 mod day1;
 mod day2;
@@ -11,18 +12,44 @@ fn get_input(day: i32) -> String {
 }
 
 fn main() {
-    let input = get_input(1);
-    println!("{}", "DAY 1");
-    println!("Part One Solution = {}", day1::part1::solution(&input));
-    println!("Part Two Solution = {}", day1::part2::solution(&input));
 
-    let input = get_input(2);
-    println!("{}", "DAY 2");
-    println!("Part One Solution = {}", day2::part1::solution(&input));
-    println!("Part Two Solution = {}", day2::part2::solution(&input));
+    let day_number;
+    loop {
+        print!("Which Day's solution do you want to get: ");
+        let _ = std::io::stdout().flush();
+        let mut line = String::new();
+        std::io::stdin().read_line(&mut line).unwrap();
+        if let Ok(n) = line.trim().parse::<i32>() {
+            println!("");
+            day_number = n;
+            break;
+        } else {
+            println!("You have to input a number.");
+        }
+    }
 
-    let input = get_input(3);
-    println!("{}", "DAY 3");
-    println!("Part One Solution = {}", day3::part1::solution(&input));
-    println!("Part Two Solution = {}", day3::part2::solution(&input));
+    match day_number {
+        1 => {
+            let input = get_input(1);
+            println!("{}", "### DAY 1");
+            println!("Part One Solution = {}", day1::part1::solution(&input));
+            println!("Part Two Solution = {}", day1::part2::solution(&input));
+        },
+        2 => {
+            let input = get_input(2);
+            println!("{}", "### DAY 2");
+            println!("Part One Solution = {}", day2::part1::solution(&input));
+            println!("Part Two Solution = {}", day2::part2::solution(&input));
+        },
+        3 => {
+            let input = get_input(3);
+            println!("{}", "### DAY 3");
+            println!("Part One Solution = {}", day3::part1::solution(&input));
+            println!("Part Two Solution = {}", day3::part2::solution(&input));
+        },
+        _ => {
+            println!("The day {} is not implemented yet", day_number);
+        },
+    }
+
 }
