@@ -4,6 +4,7 @@ use std::io::{stdin, Write};
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 const CARGO_PROJECT_PATH: &str = env!("CARGO_MANIFEST_DIR");
 
@@ -46,6 +47,12 @@ fn main() {
             println!("{}", "### DAY 3");
             println!("Part One Solution = {}", day3::part1::solution(&input));
             println!("Part Two Solution = {}", day3::part2::solution(&input));
+        },
+        4 => {
+            let input = get_input(4);
+            println!("{}", "### DAY 4");
+            println!("Part One Solution = {}", day4::part1::solution(&input));
+            println!("Part Two Solution = {}", day4::part2::solution(&input));
         },
         _ => {
             println!("The day {} is not implemented yet", day_number);
